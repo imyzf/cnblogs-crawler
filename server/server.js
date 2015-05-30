@@ -3,6 +3,8 @@ var boot = require('loopback-boot');
 
 var app = module.exports = loopback();
 
+app.use(loopback.static('../client'));
+
 app.start = function() {
   // start the web server
   return app.listen(function() {
