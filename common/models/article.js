@@ -17,7 +17,7 @@ module.exports = function (Article) {
       method: 'POST',
       headers: {
         'Connection': 'keep-alive',
-        'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.65 Safari/537.36',
+        'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36',
         'Content-Type': 'application/json; charset=UTF-8',
         'Referer': 'http://www.cnblogs.com/',
         'Accept-Language': 'zh-CN,zh;q=0.8,en;q=0.6,zh-TW;q=0.4,en-US;q=0.2'
@@ -30,7 +30,8 @@ module.exports = function (Article) {
       });
       res.on('end', function () {
         var $ = cheerio.load(html);
-        $('.post_item_body').each(function () {
+        var postItemBody = $('.post_item_body');
+        postItemBody.each(function (index) {
           var postItem = $(this);
           var titleLink = postItem.find('.titlelnk');
           var title = titleLink.text();
@@ -40,14 +41,27 @@ module.exports = function (Article) {
           var author = itemFoot.children('a').text();
           var dateReg = new RegExp(/\d{4}-\d{2}-\d{2} \d{2}:\d{2}/);
           var date = new Date(dateReg.exec(itemFoot.contents()[2]));
-          console.log('title  ', title);
-          console.log('url  ', articleUrl);
-          console.log('summary  ', summary);
-          console.log('author  ', author);
-          console.log('date  ', date);
-          console.log('----------------------------------------------------------');
+          var req = http.get(articleUrl, function(res) {
+            var articleHtml = '';
+            res.on('data', function (chunk) {
+              articleHtml += chunk;
+            });
+            res.on('end', function () {
+              var $ = cheerio.load(articleHtml);
+              var content = $('#cnblogs_post_body').html();
+              console.log('title:  ', title);
+              console.log('date:   ', date);
+              console.log('author: ', author);
+              console.log('url:    ', articleUrl);
+              console.log('summary:', summary);
+              console.log('content:');
+              console.log(content);
+              console.log('----------------------------------------------------------');
+              if (index == postItemBody.length - 1)
+                crawlPage(currentPage + 1, maxPage, cb);
+            });
+          });
         });
-        crawlPage(currentPage + 1, maxPage, cb);
       })
     });
     req.write(JSON.stringify({
