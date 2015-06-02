@@ -8,9 +8,6 @@ module.exports = function (Article) {
       cb(null, 'finish');
       return;
     }
-    for (var i = 0; i < 3; i++) console.log();
-    console.log('------------ page ' + currentPage + ' -------------------');
-    for (var i = 0; i < 3; i++) console.log();
     var options = {
       hostname: 'www.cnblogs.com',
       path: '/mvc/AggSite/PostList.aspx',
@@ -41,7 +38,7 @@ module.exports = function (Article) {
           var author = itemFoot.children('a').text();
           var dateReg = new RegExp(/\d{4}-\d{2}-\d{2} \d{2}:\d{2}/);
           var date = new Date(dateReg.exec(itemFoot.contents()[2]));
-          var req = http.get(articleUrl, function(res) {
+          var req = http.get(articleUrl, function (res) {
             var articleHtml = '';
             res.on('data', function (chunk) {
               articleHtml += chunk;
@@ -49,14 +46,17 @@ module.exports = function (Article) {
             res.on('end', function () {
               var $ = cheerio.load(articleHtml);
               var content = $('#cnblogs_post_body').html();
-              console.log('title:  ', title);
-              console.log('date:   ', date);
-              console.log('author: ', author);
-              console.log('url:    ', articleUrl);
-              console.log('summary:', summary);
-              console.log('content:');
-              console.log(content);
-              console.log('----------------------------------------------------------');
+              Article.upsert(
+                {
+                  id: articleUrl,
+                  title: title,
+                  date: date,
+                  author: author,
+                  url: articleUrl,
+                  summary: summary,
+                  content: content
+                }
+              );
               if (index == postItemBody.length - 1)
                 crawlPage(currentPage + 1, maxPage, cb);
             });
@@ -74,14 +74,22 @@ module.exports = function (Article) {
     req.end();
   }
 
-  Article.crawl = function (cb) {
-    crawlPage(1, 3, cb)
+  Article.crawl = function (category, start, end, cb) {
+    if (start > end)
+      cb({name: 'args error', status: '400', message: 'start cannot be larger than end'});
+    else
+      crawlPage(start, end, cb);
   };
 
   Article.remoteMethod(
     'crawl',
     {
       http: {verb: 'get'},
+      accepts: [
+        {arg: 'category', type: 'string'},
+        {arg: 'start', type: 'number', required: true},
+        {arg: 'end', type: 'number', required: true}
+      ],
       returns: {arg: 'status', type: 'string'}
     }
   )
