@@ -16,9 +16,6 @@
     "author": {
       "type": "string"
     },
-    "url":{
-      "type": "string"
-    },
     "content": {
       "type": "string"
     },

@@ -37,7 +37,7 @@ module.exports = function (Article) {
           var itemFoot = postItem.children('.post_item_foot');
           var author = itemFoot.children('a').text();
           var dateReg = new RegExp(/\d{4}-\d{2}-\d{2} \d{2}:\d{2}/);
-          var date = new Date(dateReg.exec(itemFoot.contents()[2]));
+          var date = new Date(dateReg.exec(itemFoot.contents()[2].data)[0]);
           var req = http.get(articleUrl, function (res) {
             var articleHtml = '';
             res.on('data', function (chunk) {
@@ -52,7 +52,6 @@ module.exports = function (Article) {
                   title: title,
                   date: date,
                   author: author,
-                  url: articleUrl,
                   summary: summary,
                   content: content
                 }
