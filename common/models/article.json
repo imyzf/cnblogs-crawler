@@ -22,7 +22,7 @@
     "category": {
       "type": "string"
     },
-    "time": {
+    "date": {
       "type": "date"
     }
   },
