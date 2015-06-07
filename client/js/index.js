@@ -6,7 +6,11 @@ $(document).ready(function () {
       }
     },
     function (data) {
+      var count = 0;
+      var colLeft = '';
+      var colRight = '';
       data.forEach(function(item) {
+        count ++;
         var date = new Date(item.date);
         date = date.getFullYear() + '-' + (date.getMonth()+1) + '-' + date.getDate() + ' '
           + date.getHours() + ':' + date.getMinutes();
@@ -22,7 +26,12 @@ $(document).ready(function () {
             '</article>' +
           '</a>' +
           '</div>';
-        $('#article-list').append(article);
-      })
+        if (count % 2)
+          colLeft += article;
+        else
+          colRight += article;
+      });
+      $('#col-left').append(colLeft);
+      $('#col-right').append(colRight);
     })
 });

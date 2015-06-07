@@ -20,13 +20,18 @@
   max-width: 100%;
 }
 
+#col-left, #col-right {
+  box-sizing: border-box;
+  float: left;
+  width: 50%;
+}
+
 .article-div {
   position: relative;
   padding-right: 15px;
   padding-left: 15px;
   margin-bottom: 20px;
-  float: left;
-  width: 50%;
+  width: 100%;
   box-sizing: border-box;
 }
 
