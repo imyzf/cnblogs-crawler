@@ -11,6 +11,7 @@ $(document).ready(function () {
         date = date.getFullYear() + '-' + (date.getMonth()+1) + '-' + date.getDate() + ' '
           + date.getHours() + ':' + date.getMinutes();
         var article =
+          '<div class="article-div">' +
           '<a href="reader.html#' + item.id + '" target="_self">' +
             '<article>' +
             '<h1>' + item.title + '</h1>' +
@@ -19,7 +20,8 @@ $(document).ready(function () {
               '<span class="author">' + item.author + '</span>发表于<span class="date">' + date + '</span>' +
             '</p>' +
             '</article>' +
-          '</a>';
+          '</a>' +
+          '</div>';
         $('#article-list').append(article);
       })
     })
