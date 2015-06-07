@@ -8,6 +8,8 @@ module.exports = function (Article) {
       cb(null, 'finish');
       return;
     }
+    else
+      console.log("current: " + currentPage + ",  target: " + maxPage);
     var options = {
       hostname: 'www.cnblogs.com',
       path: '/mvc/AggSite/PostList.aspx',
