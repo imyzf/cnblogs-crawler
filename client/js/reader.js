@@ -31,7 +31,8 @@ function loadArticleList() {
   $.getJSON('http://localhost:3000/api/articles',
     {
       filter: {
-        fields: {title: true, author: true, date: true, id: true}
+        fields: {title: true, author: true, date: true, id: true},
+        order: 'date DESC'
       }
     },
     function (data) {

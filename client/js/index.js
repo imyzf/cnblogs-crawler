@@ -2,7 +2,8 @@ $(document).ready(function () {
   $.getJSON('http://localhost:3000/api/articles',
     {
       filter: {
-        fields: {id: true, title: true, summary: true, author: true, date: true, cover: true}
+        fields: {id: true, title: true, summary: true, author: true, date: true, cover: true},
+        order: 'date DESC'
       }
     },
     function (data) {
