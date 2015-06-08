@@ -1,0 +1,30 @@
+#login-div {
+  margin-top: 180px;
+}
+
+#login-title {
+  margin-bottom: 30px;
+  color: white;
+}
+
+#login-title > h2 {
+  font-weight: 500;
+}
+
+body {
+  background-color: #66CCFF;
+}
+
+#login-btn {
+  margin-top: 30px;
+}
+
+#login-form input {
+  background-color: transparent;
+  border-color: white;
+  color: white;
+}
+
+#login-form input::-webkit-input-placeholder { /* WebKit browsers */
+  color: white;
+}
