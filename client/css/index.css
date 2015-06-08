@@ -56,7 +56,13 @@ article > img {
   width: 100%;
 }
 
+article > h1 {
+  word-wrap: break-word;
+  line-height: 1.5;
+}
+
 .summary {
+  word-wrap: break-word;
   line-height: 1.5;
   color: #666;
 }
