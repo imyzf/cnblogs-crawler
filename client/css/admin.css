@@ -12,7 +12,7 @@
 }
 
 body {
-  background-color: #66CCFF;
+  background-color: #2a3542;
 }
 
 #login-btn {
@@ -27,4 +27,21 @@ body {
 
 #login-form input::-webkit-input-placeholder { /* WebKit browsers */
   color: white;
+}
+
+label {
+  color: white;
+  font-size: 20px;
+}
+
+.status-box {
+  display: none;
+  color: white;
+  font-size: 20px;
+  margin-top: 40px;
+  border: 1px dashed white;
+}
+
+.status-img {
+  margin-right: 15px;
 }

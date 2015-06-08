@@ -16,7 +16,7 @@ $(document).ready(function () {
           + date.getHours() + ':' + date.getMinutes();
         var article =
           '<div class="article-div">' +
-          '<a href="reader.html#' + item.id + '" target="_self">' +
+          '<a href="reader.html#' + item.id + '" target="_blank">' +
             '<article>' +
             '<h1>' + item.title + '</h1>' +
             (item.cover ? '<img src="' + item.cover + '">' : '' ) +

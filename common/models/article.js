@@ -88,6 +88,15 @@ module.exports = function (Article) {
       crawlPage(start, end, cb);
   };
 
+  Article.delete = function(cb) {
+    Article.destroyAll(function (err){
+      if (err)
+        cb(err);
+      else
+        cb(null, 'finish');
+    })
+  };
+
   Article.remoteMethod(
     'crawl',
     {
@@ -97,6 +106,14 @@ module.exports = function (Article) {
         {arg: 'start', type: 'number', required: true},
         {arg: 'end', type: 'number', required: true}
       ],
+      returns: {arg: 'status', type: 'string'}
+    }
+  );
+
+  Article.remoteMethod(
+    'delete',
+    {
+      http: {verb: 'get'},
       returns: {arg: 'status', type: 'string'}
     }
   )
