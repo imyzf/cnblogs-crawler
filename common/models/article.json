@@ -16,6 +16,9 @@
     "author": {
       "type": "string"
     },
+    "cover": {
+      "type": "string"
+    },
     "content": {
       "type": "string"
     },

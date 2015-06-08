@@ -47,13 +47,19 @@ module.exports = function (Article) {
             });
             res.on('end', function () {
               var $ = cheerio.load(articleHtml);
-              var content = $('#cnblogs_post_body').html();
+              var postBody = $('#cnblogs_post_body');
+              var content = postBody.html();
+              var cover = postBody.find("img[alt!='复制代码']").first().attr('src');
+              if (cover == 'http://images.cnblogs.com/OutliningIndicators/ContractedBlock.gif' ||
+                cover == 'http://shumanu.com/Content/ueditor/themes/default/images/spacer.gif')
+                cover = undefined;
               Article.upsert(
                 {
                   id: articleUrl,
                   title: title,
                   date: date,
                   author: author,
+                  cover: cover,
                   summary: summary,
                   content: content
                 }

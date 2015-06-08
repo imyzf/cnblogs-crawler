@@ -2,7 +2,7 @@ $(document).ready(function () {
   $.getJSON('http://localhost:3000/api/articles',
     {
       filter: {
-        fields: {id: true, title: true, summary: true, author: true, date: true}
+        fields: {id: true, title: true, summary: true, author: true, date: true, cover: true}
       }
     },
     function (data) {
@@ -19,6 +19,7 @@ $(document).ready(function () {
           '<a href="reader.html#' + item.id + '" target="_self">' +
             '<article>' +
             '<h1>' + item.title + '</h1>' +
+            (item.cover ? '<img src="' + item.cover + '">' : '' ) +
             '<p class="summary">' + item.summary + '</p>' +
             '<p class="footer">' +
               '<span class="author">' + item.author + '</span>发表于<span class="date">' + date + '</span>' +

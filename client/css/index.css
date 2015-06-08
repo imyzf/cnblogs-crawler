@@ -58,6 +58,7 @@ article > img {
 
 .summary {
   line-height: 1.5;
+  color: #666;
 }
 
 .author {
@@ -69,5 +70,5 @@ article > img {
 }
 
 .footer {
-  color: #666;
+  color: #333;
 }
