@@ -3,25 +3,26 @@
 <head lang="en">
   <meta charset="UTF-8">
   <title>博客园阅读器</title>
+  <link href="css/main.css" rel="stylesheet">
+  <link href="css/reader.css" rel="stylesheet">
 </head>
-<body style="margin: auto 15%">
-
-<a id="url"></a>
-
-<div id="content"></div>
+<body>
+<div id="article-list">
+  <!--<div class="article-item current-view">
+    <h4>这是一个文章的标题这是一个文章的标题这是一个文章的标题这是一个文章的标题这是一个文章的标题</h4>
+    <p><span class="author">作者</span><span class="date">2015-05-30</span></p>
+  </div>-->
+</div>
+<div id="article">
+  <h1 id="title">内容加载中...</h1>
+  <p id="info">
+    <span id="author"></span><span id="date"></span>
+  </p>
+  <div id="content">
+  </div>
+</div>
 
 <script src="http://cdn.kyfly.net/lib/js/jquery.min.js"></script>
-<script>
-  $(document).ready(function () {
-    $.getJSON('http://localhost:3000/api/articles',
-      {filter: {limit: 1}},
-      function (data) {
-        $('#url').attr('href', data[0].id);
-        $('#url').text(data[0].id);
-        $('#content').html(data[0].content);
-        $('#content').find('*').not('pre>*').removeAttr('style');
-      })
-  });
-</script>
+<script src="js/reader.js"></script>
 </body>
 </html>
