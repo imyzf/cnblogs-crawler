@@ -105,5 +105,7 @@ label + input {
 
 .status-img {
   margin-right: 15px;
+  margin-bottom: 5px;
+  vertical-align: middle;
 }
 
