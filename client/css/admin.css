@@ -1,31 +1,70 @@
-#login-div {
-  margin-top: 180px;
-}
-
-#login-title {
-  margin-bottom: 30px;
-  color: white;
-}
-
-#login-title > h2 {
-  font-weight: 500;
-}
-
 body {
   background-color: #2a3542;
+}
+
+#form-div {
+  margin: 180px auto 0;
+  width: 300px;
+}
+
+#form-title {
+  margin-bottom: 30px;
+  color: white;
+  text-align: center;
+}
+
+#form-title > h1 {
+  font-weight: 500;
 }
 
 #login-btn {
   margin-top: 30px;
 }
 
-#login-form input {
-  background-color: transparent;
-  border-color: white;
-  color: white;
+.form-group {
+  margin-bottom: 15px;
 }
 
-#login-form input::-webkit-input-placeholder { /* WebKit browsers */
+input {
+  box-sizing: border-box;
+  height: 46px;
+  width: 100%;
+  background-color: transparent;
+  border: 1px solid white;
+  border-radius: 6px;
+  padding: 10px 16px;
+  color: white;
+  font-size: 18px;
+}
+
+input:focus {
+  outline: none;
+  border-color: #9ecaed;
+  box-shadow: 0 0 8px #9ecaed;
+}
+
+button {
+  box-sizing: border-box;
+  width: 100%;
+  font-size: 18px;
+  height: 46px;
+  border-radius: 6px;
+  border: 1px solid;
+}
+
+.btn-success {
+  color: #fff;
+  background-color: #5cb85c;
+  border-color: #4cae4c;
+}
+
+.btn-danger {
+  color: #fff;
+  background-color: #d9534f;
+  border-color: #d43f3a;
+}
+
+input::-webkit-input-placeholder { /* WebKit browsers */
   color: white;
 }
 
@@ -34,7 +73,29 @@ label {
   font-size: 20px;
 }
 
+label + input {
+  width: 196px;
+  margin-left: 20px;
+}
+
+.font-zero {
+  font-size:0
+}
+
+.left-button {
+  display: inline-block;
+  width: 45%;
+  margin-right: 5%;
+}
+
+.right-button {
+  display: inline-block;
+  width: 45%;
+  margin-left: 5%;
+}
+
 .status-box {
+  text-align: center;
   display: none;
   color: white;
   font-size: 20px;
@@ -45,3 +106,4 @@ label {
 .status-img {
   margin-right: 15px;
 }
+

@@ -2,37 +2,34 @@
 <html>
 <head lang="en">
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
   <title>管理后台</title>
-  <link href="http://cdn.kyfly.net/lib/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/main.css" rel="stylesheet">
   <link href="css/admin.css" rel="stylesheet">
 </head>
 <body>
-  <div class="col-sm-offset-4 col-sm-4 col-md-offset-4 col-md-4" id="login-div">
-    <div class="text-center" id="login-title" >
-      <h2>管理后台</h2>
+  <div id="form-div">
+    <div id="form-title" >
+      <h1>管理后台</h1>
     </div>
-    <form id="login-form" class="form-horizontal">
+    <form id="login-form">
       <div class="form-group">
-        <label for="start-page" class="col-sm-4 col-lg-3 control-label">起始页码</label>
-        <div class="col-sm-8 col-lg-9">
-          <input type="number" class="form-control" id="start-page">
-        </div>
+        <label for="start-page">起始页码</label>
+        <input type="number" id="start-page">
       </div>
       <div class="form-group">
-        <label for="end-page" class="col-sm-4 col-lg-3 control-label">结束页码</label>
-        <div class="col-sm-8 col-lg-9">
-          <input type="number" class="form-control" id="end-page">
-        </div>
+        <label for="end-page">结束页码</label>
+        <input type="number" id="end-page">
       </div>
-      <div class="form-group text-center" id="login-btn">
-        <button type="button" class="btn btn-success col-sm-5 col-md-5" id="btn-crawl">抓取
-        </button>
-        <button type="button"
-                class="btn btn-danger col-sm-offset-2 col-sm-5 col-md-5" id="btn-delete">清空
-      </button>
+      <div class="form-group font-zero" id="login-btn">
+        <div class="left-button">
+          <button type="button" class="btn-success" id="btn-crawl">抓取 </button>
+        </div><div class="right-button">
+          <button type="button" class="btn-danger" id="btn-delete">清空 </button>
+        </div>
       </div>
     </form>
-    <div id="waiting" class="text-center status-box">
+    <div id="waiting" class="status-box">
       <p><span class="status-img"><img src="img/wating.gif"></span>正在处理中...</p>
     </div>
   </div>
